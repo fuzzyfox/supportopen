@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+/**
+ Style inspired by Mou Fresh Air +
+**/
+/** Layout / Typography **/
+html, body {
+	background: #fff;
+	color: #000;
+	font: normal 12px/1.5 Monaco, Courier, Consolas, monospace;
+	vertical-align: baseline;
+	padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+        padding: 1em;
+    }
+}
+
+::selection {
+	background: #ff4f92;
+	color: #fff;
+}
+
+::-moz-selection {
+	background: #ff4f92;
+	color: #fff;
+}
+
+::-webkit-selection {
+	background: #ff4f92;
+	color: #fff;
+}
+
+h1 {
+	color: #6c71c4;
+	font-style: bold;
+	font-size: 24px;
+}
+
+h2 {
+	color: #6c71c4;
+	font-style: bold;
+	font-size: 20px;
+}
+
+h3 {
+	color: #6c71c4;
+	font-style: bold;
+	font-size: 17px;
+}
+
+h4 {
+	color: #268bd2;
+	font-style: bold;
+	font-size: 15px;
+}
+
+h5 {
+	color: #268bd2;
+	font-style: bold;
+	font-size: 13px;
+}
+
+h6 {
+	color: #268bd2;
+	font-style: bold;
+	font-size: 11px;
+}
+
+em {
+	color: #cb4b16;
+	font-style: italic;
+}
+
+strong {
+	color: #dc322f;
+	font-style: bold;
+}
+
+a {
+	color: #4e279a;
+	text-decoration: none;
+}
+
+code {
+	color: #008c00;
+}
+
+/** remarkdown **/
+ul, ol {
+	list-style: none;
+	margin: 1em 0;
+}
+
+ul li:before {
+	content: '* ';
+	color: #93a1a1;
+}
+
+ol { counter-reset: section; }
+ol li { counter-increment: section; }
+ol li:before {
+	content: counters(section, '.') '. ';
+	color: #93a1a1;
+}
+
+h1:before { content: '# '; }
+h2:before { content: '## '; }
+h3:before { content: '### '; }
+h4:before { content: '#### '; }
+h5:before { content: '##### '; }
+h6:before { content: '###### '; }
+
+em:before, em::after { content: '*'; }
+
+strong:before, strong:after { content: '**'; }
+
+a:before { content: '['; }
+a:after { content: '](' attr(href) ')'; }
+
+/*img {
+	visibility: hidden;
+	display: block;
+	position: relative;
+}
+img:after {
+	content: '\0021[' attr(alt) '](' attr(src) ')';
+	visibility: visible;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 748px;
+	color: #cf009a;
+}*/
+img {
+	display: none;
+}
+
+blockquote *:before {
+	content: '> ';
+	color: #93a1a1;
+}
+
+p {
+	margin: 0 0 1em 0;
+}
+
+code:before, code:after {
+	content: '`';
+}
+
+pre {
+	margin: 1em 0 1em 4ch;
+}
+pre > code:before, pre > code:after {
+	content: none;
+}
+
+hr {
+	border: none;
+	background: transparent;
+	color: #586e75;
+	height: 2em;
+}
+hr:before {
+	content: '--------';
+}
+</style>
+<title>supportopen</title>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['$$$','$$$']]}});</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<h1>supportopen</h1>
+
+<h2>Usage</h2>
+
+<p>// content to come</p>
+
+<h2>In the wild</h2>
+
+<h3>Support Open</h3>
+
+<ul>
+<li><strong>Make:</strong> <a href="http://mzl.la/supportopen">http://mzl.la/supportopen</a></li>
+<li><strong>Quilt:</strong> <a href="http://mzl.la/supportopen-quilt">http://mzl.la/supportopen-quilt</a></li>
+</ul>
+
+
+<h3>Web We Want</h3>
+
+<ul>
+<li><strong>Make:</strong> // to come</li>
+<li><strong>Quilt:</strong> // to come</li>
+</ul>
+
+</body>
+</html>
