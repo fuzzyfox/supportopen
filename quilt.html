@@ -3,97 +3,200 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Support Open Community Quilt</title>
+	<link rel="stylesheet" href="//s3-us-west-2.amazonaws.com/makerstrap/makerstrap.complete.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+	<link href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" rel="stylesheet" />
 
 	<style>
-		html,body {
-			background: black;
-			margin: auto;
-		}
+	/* basic styles */
+	html, body {
+		background: #4d4e53;
+		margin: auto;
+		overflow-x: hidden;
+		color: white;
+	}
+	header, main {
+		margin: auto;
+	}
 
-		#thumbnails {
-			display: block;
-			padding: 0;
-			margin: 0;
-			list-style: none;
-			margin: auto;
-		}
+	/* Header styles */
+	header {
+		padding: 1em;
+		text-align: center;
+	}
 
-		#thumbnails li {
-			width: 160px;
-			height: 160px;
-			display: block;
-			overflow: hidden;
-			float: left;
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-			filter: alpha(opacity=100);
-			opacity: 1;
-			cursor: pointer;
+	header h1 {
+		color: white;
+		font: 300 45px/1.2 "Open Sans", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+		height: 140px;
+		padding: 0;
+		margin: 20px auto 0;
+		display: block;
+		position: relative;
+		width: 100%;
+	}
 
-			-webkit-background-size: cover;
-			-moz-background-size: cover;
-			background-size: cover;
-			background-repeat: none;
-			background-position: center center;
+	/* Thumbnail styles */
+	#thumbnails {
+		display: block;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		margin: auto;
+	}
+	#thumbnails li {
+		width: 160px;
+		height: 160px;
+		display: block;
+		overflow: hidden;
+		/*float: left;*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter: alpha(opacity=100);
+		opacity: 1;
+		cursor: pointer;
 
-			-webkit-transition: opacity 0.6s ease;
-			-moz-transition: opacity 0.6s ease;
-			-o-transition: opacity 0.6s ease;
-			-ms-transition: opacity 0.6s ease;
-			transition: opacity 0.6s ease;
-		}
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		background-size: cover;
+		background-repeat: none;
+		background-position: center center;
 
-		#thumbnails:hover li,#thumbnails li:not(.active) {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
-			filter: alpha(opacity=40);
-			opacity: 0.4;
-		}
+		-webkit-transition: opacity 0.6s ease;
+		-moz-transition: opacity 0.6s ease;
+		-o-transition: opacity 0.6s ease;
+		-ms-transition: opacity 0.6s ease;
+		transition: opacity 0.6s ease;
+	}
+	#thumbnails:hover li,#thumbnails li:not(.active) {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+		filter: alpha(opacity=40);
+		opacity: 0.4;
+	}
 
-		#thumbnails:hover li:hover,#thumbnails li.active {
-			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-			filter: alpha(opacity=100);
-			opacity: 1;
-		}
+	#thumbnails:hover li:hover,#thumbnails li.active {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter: alpha(opacity=100);
+		opacity: 1;
+	}
 
-		#thumbnails li img {
-			display: none;
-		}
+	#thumbnails li img {
+		display: none;
+	}
 
-		#preview {
-			width: 720px;
-			height: 720px;
-			float: left;
-			border: none;
-			margin: 0;
-			padding: 0;
-			display: block;
+	/*Call To Action styles*/
+	#cta {
+		width: 480px;
+		height: 320px;
+		background: #3fb58e;
+		color: white;
+		opacity: 1;
+		padding: 20px 30px;
+		font: lighter 18px/1.4 "Open Sans", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+	}
+	#cta strong {
+		font-weight: 400;
+		font-style: italic;
+		font-size: 16px;
+	}
+	.white-button {
+		color: #3fb58e;
+		background: none repeat scroll 0% 0% #FFF;
+		display: block;
+		border: medium none;
+		border-radius: 2px;
+		padding: 16px 35px;
+		font-family: inherit;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 16px;
+		cursor: pointer;
+		display: inline-block;
+		margin: 20px auto 10px;
+		text-align: center;
+		box-sizing: border-box;
+		border-bottom: 4px solid #ABE2D0;
+	}
+	.white-button:hover {
+		text-decoration: none;
+		color: #3fb58e;
+	}
 
-			-webkit-transform: scale(0.666666);
-			-moz-transform: scale(0.666666);
-			-o-transform: scale(0.666666);
-			-ms-transform: scale(0.666666);
-			transform: scale(0.666666);
+	/* preview styles */
+	#preview {
+		width: 720px;
+		height: 720px;
+		border: none;
+		margin: 0;
+		padding: 0;
+		display: block;
+		background: white;
 
-			-webkit-transform-origin: 0 0;
-			-moz-transform-origin: 0 0;
-			-o-transform-origin: 0 0;
-			-ms-transform-origin: 0 0;
-			transform-origin: 0 0;
-			margin-right: -240px;
-			margin-bottom: -240px;
-		}
+		-webkit-transform: scale(0.666666);
+		-moz-transform: scale(0.666666);
+		-o-transform: scale(0.666666);
+		-ms-transform: scale(0.666666);
+		transform: scale(0.666666);
+
+		-webkit-transform-origin: 0 0;
+		-moz-transform-origin: 0 0;
+		-o-transform-origin: 0 0;
+		-ms-transform-origin: 0 0;
+		transform-origin: 0 0;
+		margin-right: -240px;
+		margin-bottom: -240px;
+	}
 	</style>
 </head>
 <body>
-	<iframe src="//fuzzyfox.makes.org/thimble/i-believe-in-an-open-web-because_" frameborder="0" id="preview"></iframe>
-	<ul id="thumbnails"></ul>
+	<!-- BEGIN HEADER STRIP -->
+	<header>
+		<h1>
+			Support Open <br>
+			Community Quilt
+		</h1>
+		<p>This version of the quilt is pulling from all previously known campaigns. This incudes <a href="?tags=webwewant">#webwewant</a>, <a href="?tags=millionmozillians">#millionmozillians</a>, and <a href="?tags=supportopen">#supportopen</a>.</p>
+	</header>
+	<!-- END HEADER STRIP -->
 
-	<script src="//code.jquery.com/jquery.min.js"></script>
+	<!-- BEGIN QUILT -->
+	<main>
+		<!-- BEGIN PREVIEW -->
+		<iframe src="//fuzzyfox.makes.org/thimble/i-believe-in-an-open-web-because_" frameborder="0" id="preview" class="msnry"></iframe>
+		<!-- END PREVIEW -->
+
+		<!-- BEGIN CALL TO ACTION -->
+		<div id="cta" class="msnry">
+			<p>In this section you can place whatever <strong>call to action</strong> you like, along with any HTML that you like...</p>
+			<p>There is a section within the CSS for you to style things in this block too!</p>
+			<p>The only limitation on this block is the size. It's height and width are fixed to what you see  now.</p>
+			<p><strong>Remix and { your short, powerful call to action here }.</strong></p>
+
+			<!-- BEGIN CTA BUTTON -->
+			<p style="text-align: center;">
+				<a href="http://mzl.la/supportopen" class="white-button">
+					<i class="fa fa-code-fork"></i> Remix
+				</a>
+			</p>
+			<!-- END CTA BUTTON -->
+		</div>
+		<!-- END CALL TO ACTION -->
+
+		<!-- BEGIN USER GENERATED CONTENT -->
+		<ul id="thumbnails">
+			<!-- javascript populates this list with makes -->
+		</ul>
+		<!-- END USER GENERATED CONTENT -->
+	</main>
+	<!-- END QUILT -->
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"></script>
 	<script src="//webmaker.org/bower/makeapi-client/src/make-api.js"></script>
 	<script>
 		// Set some basic options defaults
 		// Note: can still be overidden by query string
 		var config = {
-			tags: ['supportopen', 'millionmozillians'],
+			tags: ['supportopen', 'webwewant', 'millionmozillians'],
 			execution: 'or',
 			limit: 100,
 			interval: 7000
@@ -128,7 +231,7 @@
 			if(query.tags) { query.tags = query.tags.split(','); }
 			// if no tags default to supportopen tag
 			var searchTags = query.tags || config.tags;
-			
+
 			// number of makes to display
 			var numMakes = 0;
 			// order to display them in
@@ -147,7 +250,7 @@
 					if(err){
 						// let users know we failed, but devs know why
 						console.log(err);
-						document.querySelector('#thumbnails').innerHTML = '<h1 style="color:white">failed to load :()</h1>';
+						document.querySelector('#thumbnails').innerHTML = '<h1 style="color:white">failed to load :(</h1>';
 						return;
 					}
 
@@ -160,9 +263,10 @@
 							var thumb = document.createElement('li'),
 								img = document.createElement('img');
 
-							thumb.style.backgroundImage = 'url(' + make.thumbnail + ')';
 							thumb.dataset.make = make.url;
-							img.src = make.thumbnail;
+							thumb.classList.add('msnry');
+							thumb.style.backgroundImage = 'url(https://secure.gravatar.com/avatar/' + make.emailHash + '?s=200&d=' + make.thumbnail + ')';
+							img.src = 'https://secure.gravatar.com/avatar/' + make.emailHash + '?s=200&d=' + make.thumbnail;
 
 							thumb.appendChild(img);
 							document.querySelector('#thumbnails').appendChild(thumb);
@@ -175,12 +279,21 @@
 							displayOrder.shuffle();
 						}
 					});
+					// init masonary
+					var container = document.querySelector('main');
+					var msnry = new Masonry( container, {
+						// options
+						itemSelector: '.msnry',
+						columnWidth: 160,
+						transitionDuration: 0.7
+					});
 				});
 
 			// show next make function
 			var showNext = function(){
 				var $thumbnails = $('#thumbnails li'),
 					selection = displayOrder.shift();
+					displayOrder.push(selection);
 
 				$thumbnails.each(function(){
 					$(this).removeClass('active');
@@ -192,7 +305,7 @@
 			};
 			// run show next on a timer
 			var displayInterval = setInterval(showNext, query.interval || config.interval);
-			
+
 			// reload page after all makes shown, essensially searching for the newest makes
 			setTimeout(function(){
 				window.location.reload();
@@ -209,7 +322,8 @@
 
 			// handle page resizes better
 			var setBodyWith = function(){
-				$('body').width(160 * Math.floor(($(window).width() / 160)));
+				$('main').width(160 * Math.floor(($(window).width() / 160)));
+				$('header').eq(0).width(160 * Math.floor(($(window).width() / 160)));
 			};
 			setBodyWith();
 			$(window).resize(setBodyWith);
