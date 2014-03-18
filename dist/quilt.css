@@ -1,0 +1,131 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+/* basic styles */
+html, body {
+  background: #4d4e53;
+  margin: auto;
+  overflow-x: hidden;
+  color: white;
+}
+header, main {
+  margin: auto;
+}
+
+/* Header styles */
+header.jumbotron {
+  margin-top: -20px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* Thumbnail styles */
+#quiltMakes {
+  display: block;
+  padding: 0;
+  list-style: none;
+  margin: 0 auto;
+}
+#quiltMakes li {
+  width: 160px;
+  height: 160px;
+  display: block;
+  overflow: hidden;
+  /*float: left;*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1;
+  cursor: pointer;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  -webkit-transition: opacity 0.6s ease;
+  -moz-transition: opacity 0.6s ease;
+  -o-transition: opacity 0.6s ease;
+  -ms-transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease;
+}
+#quiltMakes:hover li,#quiltMakes li:not(.active) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: alpha(opacity=40);
+  opacity: 0.4;
+}
+
+#quiltMakes:hover li:hover,#quiltMakes li.active {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+
+#quiltMakes li a {
+  display: none;
+}
+
+/*Call To Action styles*/
+#cta {
+  width: 480px;
+  height: 320px;
+  background: #3fb58e;
+  color: white;
+  opacity: 1;
+  padding: 20px 30px;
+  font: lighter 18px/1.4 "Open Sans", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+}
+#cta strong {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+}
+.white-button {
+  color: #3fb58e;
+  background: none repeat scroll 0% 0% #FFF;
+  border: medium none;
+  border-radius: 2px;
+  padding: 16px 35px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 20px auto 10px;
+  text-align: center;
+  box-sizing: border-box;
+  border-bottom: 4px solid #ABE2D0;
+}
+.white-button:hover {
+  text-decoration: none;
+  color: #3fb58e;
+}
+
+/* preview styles */
+#makePreview {
+  width: 720px;
+  height: 720px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  background: white;
+
+  -webkit-transform: scale(0.666666);
+  -moz-transform: scale(0.666666);
+  -o-transform: scale(0.666666);
+  -ms-transform: scale(0.666666);
+  transform: scale(0.666666);
+
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  margin-right: -240px;
+  margin-bottom: -240px;
+}
