@@ -1,19 +1,43 @@
-# supportopen
+# Support Open Community Quilt
+A user generated quilt of tagged makes.
 
 ## Usage
-// content to come
+### Configuration
+The quilt has some builtin default options (seen below) which can be overridden on initilization, or via page querystring.
+
+	var config = {
+		tags: [ 'supportopen', 'webwewant', 'millionmozillians' ],
+		execution: 'or',
+		limit: 100,
+		duration: 7000
+	};
+
+	Quilt( config );
+
+#### Configure by URL
+* **Tags:** `tags=comma,separated,list,of,tags`
+* **Execution:** `execution=or`
+* **Limit:** `limit=100`
+* **Duration:** `duration=7000`
+
+**Example** showing how to fetch only 10 makes tagged `supportopen` **and** `mozfest`, and show each for 10 seconds.
+
+	fuzzyfox.github.io/supportopen/quilt.html?tags=supportopen,mozfest&execution=and&limit=10&duration=10000
+
 
 ## Demo
-<http://fuzzyfox.github.io/supportopen/quilt>
+[Generic quilt example](http://fuzzyfox.github.io/supportopen/quilt.html) *– included in this repository*
+
+Displays makes with all known tags used for quilts. Essentially the "sharing is caring" mode.
 
 ## In the wild
 ### Support Open
-* **Make:** <http://mzl.la/supportopen>
-* **Quilt:** <http://mzl.la/supportopen-quilt>
+* [Starter Make](http://mzl.la/supportopen)
+* [Support Open Quilt](http://mzl.la/supportopen-quilt)
 
 ### Web We Want
-* **Make:** <https://mozilla.makes.org/thimble/the-web-we-want>
-* **Quilt:** <http://mzl.la/webwewantremix>
+* [Starter Make](https://mozilla.makes.org/thimble/the-web-we-want)
+* [Web We Want Quilt](http://mzl.la/webwewantremix)
 
 ## Development
 Play nice:
