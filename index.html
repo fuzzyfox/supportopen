@@ -1,209 +1,186 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<style>
-/**
- Style inspired by Mou Fresh Air +
-**/
-/** Layout / Typography **/
-html, body {
-	background: #fff;
-	color: #000;
-	font: normal 12px/1.5 Monaco, Courier, Consolas, monospace;
-	vertical-align: baseline;
-	padding: 10px;
-}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <style>
+  /**
+   Style inspired by Mou Fresh Air +
+   **/
+   /** Layout / Typography **/
+   html, body {
+    background: #fff;
+    color: #000;
+    font: normal 12px/1.5 Monaco, Courier, Consolas, monospace;
+    vertical-align: baseline;
+    padding: 10px;
+  }
 
-@media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     body {
-        width: 748px;
-        margin:10px auto;
-        padding: 1em;
+      width: 748px;
+      margin:10px auto;
+      padding: 1em;
     }
-}
+  }
 
-::selection {
-	background: #ff4f92;
-	color: #fff;
-}
+  ::selection {
+    background: #ff4f92;
+    color: #fff;
+  }
 
-::-moz-selection {
-	background: #ff4f92;
-	color: #fff;
-}
+  ::-moz-selection {
+    background: #ff4f92;
+    color: #fff;
+  }
 
-::-webkit-selection {
-	background: #ff4f92;
-	color: #fff;
-}
+  ::-webkit-selection {
+    background: #ff4f92;
+    color: #fff;
+  }
 
-h1 {
-	color: #6c71c4;
-	font-style: bold;
-	font-size: 24px;
-}
+  h1 {
+    color: #6c71c4;
+    font-style: bold;
+    font-size: 24px;
+  }
 
-h2 {
-	color: #6c71c4;
-	font-style: bold;
-	font-size: 20px;
-}
+  h2 {
+    color: #6c71c4;
+    font-style: bold;
+    font-size: 20px;
+  }
 
-h3 {
-	color: #6c71c4;
-	font-style: bold;
-	font-size: 17px;
-}
+  h3 {
+    color: #6c71c4;
+    font-style: bold;
+    font-size: 17px;
+  }
 
-h4 {
-	color: #268bd2;
-	font-style: bold;
-	font-size: 15px;
-}
+  h4 {
+    color: #268bd2;
+    font-style: bold;
+    font-size: 15px;
+  }
 
-h5 {
-	color: #268bd2;
-	font-style: bold;
-	font-size: 13px;
-}
+  h5 {
+    color: #268bd2;
+    font-style: bold;
+    font-size: 13px;
+  }
 
-h6 {
-	color: #268bd2;
-	font-style: bold;
-	font-size: 11px;
-}
+  h6 {
+    color: #268bd2;
+    font-style: bold;
+    font-size: 11px;
+  }
 
-em {
-	color: #cb4b16;
-	font-style: italic;
-}
+  em {
+    color: #cb4b16;
+    font-style: italic;
+  }
 
-strong {
-	color: #dc322f;
-	font-style: bold;
-}
+  strong {
+    color: #dc322f;
+    font-style: bold;
+  }
 
-a {
-	color: #4e279a;
-	text-decoration: none;
-}
+  a {
+    color: #4e279a;
+    text-decoration: none;
+  }
 
-code {
-	color: #008c00;
-}
+  code {
+    color: #008c00;
+  }
 
-/** remarkdown **/
-ul, ol {
-	list-style: none;
-	margin: 1em 0;
-}
+  /** remarkdown **/
+  ul, ol {
+    list-style: none;
+    margin: 1em 0;
+  }
 
-ul li:before {
-	content: '* ';
-	color: #93a1a1;
-}
+  ul li:before {
+    content: '* ';
+    color: #93a1a1;
+  }
 
-ol { counter-reset: section; }
-ol li { counter-increment: section; }
-ol li:before {
-	content: counters(section, '.') '. ';
-	color: #93a1a1;
-}
+  ol { counter-reset: section; }
+  ol li { counter-increment: section; }
+  ol li:before {
+    content: counters(section, '.') '. ';
+    color: #93a1a1;
+  }
 
-h1:before { content: '# '; }
-h2:before { content: '## '; }
-h3:before { content: '### '; }
-h4:before { content: '#### '; }
-h5:before { content: '##### '; }
-h6:before { content: '###### '; }
+  h1:before { content: '# '; }
+  h2:before { content: '## '; }
+  h3:before { content: '### '; }
+  h4:before { content: '#### '; }
+  h5:before { content: '##### '; }
+  h6:before { content: '###### '; }
 
-em:before, em::after { content: '*'; }
+  em:before, em::after { content: '*'; }
 
-strong:before, strong:after { content: '**'; }
+  strong:before, strong:after { content: '**'; }
 
-a:before { content: '['; }
-a:after { content: '](' attr(href) ')'; }
+  a:before { content: '['; }
+  a:after { content: '](' attr(href) ')'; }
+  img {
+    display: none;
+  }
 
-/*img {
-	visibility: hidden;
-	display: block;
-	position: relative;
-}
-img:after {
-	content: '\0021[' attr(alt) '](' attr(src) ')';
-	visibility: visible;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 748px;
-	color: #cf009a;
-}*/
-img {
-	display: none;
-}
+  blockquote *:before {
+    content: '> ';
+    color: #93a1a1;
+  }
 
-blockquote *:before {
-	content: '> ';
-	color: #93a1a1;
-}
+  p {
+    margin: 0 0 1em 0;
+  }
 
-p {
-	margin: 0 0 1em 0;
-}
+  code:before, code:after {
+    content: '`';
+  }
 
-code:before, code:after {
-	content: '`';
-}
+  pre {
+    margin: 1em 0 1em 4ch;
+  }
+  pre > code:before, pre > code:after {
+    content: none;
+  }
 
-pre {
-	margin: 1em 0 1em 4ch;
-}
-pre > code:before, pre > code:after {
-	content: none;
-}
-
-hr {
-	border: none;
-	background: transparent;
-	color: #586e75;
-	height: 2em;
-}
-hr:before {
-	content: '--------';
-}
-</style>
-<title>supportopen</title>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['$$$','$$$']]}});</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  hr {
+    border: none;
+    background: transparent;
+    color: #586e75;
+    height: 2em;
+  }
+  hr:before {
+    content: '--------';
+  }
+  </style>
+  <title>Loading...</title>
 </head>
 <body>
-<h1>supportopen</h1>
+  <h1>Support Open Community Quilt</h1>
 
-<h2>Usage</h2>
+  <p>Loading <a href="./README.md">./README.md</a>. If page does not change in a few seconds visit direct by clicking the link.</p>
 
-<p>// content to come</p>
+  <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['$$$','$$$']]}});</script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  <script src="asset/vendor/jquery-2.1.0.min.js"></script>
+  <script>
+  $.ajax( './README.md', {
+    dataType: 'text',
+    success: function( data ) {
+      var converter = new Showdown.converter();
+      var readme = converter.makeHtml(data);
 
-<h2>Demo</h2>
-
-<p><a href="http://fuzzyfox.github.io/supportopen/quilt">http://fuzzyfox.github.io/supportopen/quilt</a></p>
-
-<h2>In the wild</h2>
-
-<h3>Support Open</h3>
-
-<ul>
-<li><strong>Make:</strong> <a href="http://mzl.la/supportopen">http://mzl.la/supportopen</a></li>
-<li><strong>Quilt:</strong> <a href="http://mzl.la/supportopen-quilt">http://mzl.la/supportopen-quilt</a></li>
-</ul>
-
-
-<h3>Web We Want</h3>
-
-<ul>
-<li><strong>Make:</strong> <a href="https://mozilla.makes.org/thimble/the-web-we-want">https://mozilla.makes.org/thimble/the-web-we-want</a></li>
-<li><strong>Quilt:</strong> <a href="http://mzl.la/webwewantremix">http://mzl.la/webwewantremix</a></li>
-</ul>
-
+      $( 'body' ).html( readme );
+      $( 'head > title' ).text( $( 'h1:first-of-type' ).text() );
+    }
+  });
+  </script>
 </body>
 </html>
