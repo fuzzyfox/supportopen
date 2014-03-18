@@ -193,7 +193,10 @@
 	// attempt to get more makes for infinite scroll
 	$( window ).scroll( function( e ) {
 		if ( $( window ).scrollTop() === $( document ).height() - $( window ).height() ) {
-			getMakes( ++pageNumber, startDisplayTimer );
+			getMakes( pageNumber + 1, function() {
+				pageNumber++;
+				startDisplayTimer
+			});
 		}
 	});
 })(this, this.document);
