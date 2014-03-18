@@ -4,6 +4,8 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
+/* jshint unused:false */
+
 /**
  * turn a querystring into an easy to use `key:value` object
  *
@@ -11,23 +13,23 @@
  * @return {Object}              querystring as object (duh)
  */
 var query = window.query = (function( window, document, undefined ){
-	'use strict';
+  'use strict';
 
-	return function parse( queryString ) {
-		// use given string OR use window.location.search
-		queryString = queryString || window.location.search;
+  return function parse( queryString ) {
+    // use given string OR use window.location.search
+    queryString = queryString || window.location.search;
 
-		// define internal variables
-		var pairs  = queryString.slice( 1 ).split( '&' );
-		var result = {};
+    // define internal variables
+    var pairs  = queryString.slice( 1 ).split( '&' );
+    var result = {};
 
-		// loop through all `key=value` pairs and convert to object
-		pairs.forEach( function( pair ) {
-			pair = pair.split( '=' );
-			result[ pair[ 0 ] ] = decodeURIComponent( pair[ 1 ] || '' );
-		});
+    // loop through all `key=value` pairs and convert to object
+    pairs.forEach( function( pair ) {
+      pair = pair.split( '=' );
+      result[ pair[ 0 ] ] = decodeURIComponent( pair[ 1 ] || '' );
+    });
 
-		// stringify + parse to help prevent malicious code.
-		return JSON.parse( JSON.stringify( result ) );
-	};
+    // stringify + parse to help prevent malicious code.
+    return JSON.parse( JSON.stringify( result ) );
+  };
 })( this, this.document );

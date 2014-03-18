@@ -1,0 +1,27 @@
+{
+  "name": "supportopen",
+  "version": "0.0.4",
+  "description": "A user generated quilt of tagged makes.",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fuzzyfox/supportopen.git"
+  },
+  "keywords": [
+    "supportopen",
+    "community",
+    "quilt"
+  ],
+  "author": "William Duyck <wduyck@mozillafoundation.org>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/fuzzyfox/supportopen/issues"
+  },
+  "homepage": "https://github.com/fuzzyfox/supportopen",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-jshint": "~0.9.2"
+  }
+}

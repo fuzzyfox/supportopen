@@ -1,81 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Support Open Community Quilt</title>
-	<link rel="stylesheet" href="asset/vendor/makerstrap/dist/makerstrap.complete.min.css">
-	<link rel="stylesheet" href="asset/css/quilt.css">
-	<link rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
+  <meta charset="UTF-8">
+  <title>Support Open Community Quilt</title>
+  <link rel="stylesheet" href="asset/vendor/makerstrap/dist/makerstrap.complete.min.css">
+  <link rel="stylesheet" href="asset/css/quilt.css">
+  <link rel="stylesheet" href="//mozorg.cdn.mozilla.net/media/css/tabzilla-min.css">
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<a href="./" class="navbar-brand">Support Open</a>
-			</div>
-			<div style="height: 0px;padding: 0 15px 0 15px">
-				<ul class="nav navbar-nav navbar-right">
-					<li style="margin:0;"><a href="https://github.com/fuzzyfox/supportopen"><span class="fa fa-github"></span> fuzzyfox/supportopen</a></li>
-					<li><a href="https://www.mozilla.org/" id="tabzilla">mozilla</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+  <!-- top-level navigation [optional] -->
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="./" class="navbar-brand">Support Open</a>
+      </div>
+      <div style="height: 0px;padding: 0 15px 0 15px">
+        <ul class="nav navbar-nav navbar-right">
+          <li style="margin:0;"><a href="https://github.com/fuzzyfox/supportopen"><span class="fa fa-github"></span> fuzzyfox/supportopen</a></li>
+          <li><a href="https://www.mozilla.org/" id="tabzilla">mozilla</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-	<!-- BEGIN HEADER STRIP -->
-	<header class="jumbotron">
-		<h1>
-			Support Open <br>
-			Community Quilt
-		</h1>
-		<p>This version of the quilt is pulling from all previously known campaigns.</p>
-	</header>
-	<!-- END HEADER STRIP -->
+  <!-- header strip [optional] -->
+  <header class="jumbotron">
+    <h1>
+      Support Open <br>
+      Community Quilt
+    </h1>
+    <p>This version of the quilt is pulling from all previously known campaigns.</p>
+  </header>
 
-	<!-- BEGIN QUILT -->
-	<main id="quiltContainer">
-		<!-- BEGIN PREVIEW -->
-		<iframe src="//fuzzyfox.makes.org/thimble/i-believe-in-an-open-web-because_" frameborder="0" id="makePreview" class="quilt-msnry"></iframe>
-		<!-- END PREVIEW -->
+  <!-- the actual quilt [required] -->
+  <main id="quiltContainer">
+    <!-- preview of the currently highlighted make [required] -->
+    <iframe src="//fuzzyfox.makes.org/thimble/i-believe-in-an-open-web-because_" frameborder="0" id="makePreview" class="quilt-msnry"></iframe>
 
-		<!-- BEGIN CALL TO ACTION -->
-		<div id="cta" class="quilt-msnry">
-			<p>In this section you can place whatever <strong>call to action</strong> you like, along with any HTML that you like...</p>
-			<p>There is a section within the CSS for you to style things in this block too!</p>
-			<p>The only limitation on this block is the size. It's height and width are fixed to what you see  now.</p>
-			<p><strong>Remix and { your short, powerful call to action here }.</strong></p>
+    <!-- call to action [recommended] -->
+    <div id="cta" class="quilt-msnry">
+      <p>In this section you can place whatever <strong>call to action</strong> you like, along with any HTML that you like...</p>
+      <p>There is a section within the CSS for you to style things in this block too!</p>
+      <p>The only limitation on this block is the size. It's height and width are fixed to what you see  now.</p>
+      <p><strong>Remix and { your short, powerful call to action here }.</strong></p>
 
-			<!-- BEGIN CTA BUTTON -->
-			<p style="text-align: center;">
-				<a href="http://mzl.la/supportopen" class="white-button">
-					<i class="fa fa-code-fork"></i> Remix
-				</a>
-			</p>
-			<!-- END CTA BUTTON -->
-		</div>
-		<!-- END CALL TO ACTION -->
+      <!-- remix button [recommended] -->
+      <p style="text-align: center;">
+        <a href="http://mzl.la/supportopen" class="white-button">
+          <i class="fa fa-code-fork"></i> Remix
+        </a>
+      </p>
+    </div>
 
-		<!-- BEGIN USER GENERATED CONTENT -->
-		<ul id="quiltMakes">
-			<!-- javascript populates this list with makes -->
-		</ul>
-		<!-- END USER GENERATED CONTENT -->
-	</main>
-	<!-- END QUILT -->
+    <!-- javascript populates this list with tagged makes [required] -->
+    <ul id="quiltMakes"></ul>
+  </main>
 
-	<!-- javascript -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="asset/js/jquery-2.1.0.min.js"><\/script>')</script>
+  <!-- jquery [required] -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="asset/vendor/jquery-2.1.0.min.js"><\/script>')</script>
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"></script>
-	<script>window.Masonry || document.write('<script src="asset/vendor/masonry/dist/masonry.pkgd.min.js"><\/script>')</script>
+  <!-- masonryjs to make layout prettier/easier [recommended] -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"></script>
+  <script>window.Masonry || document.write('<script src="asset/vendor/masonry/dist/masonry.pkgd.min.js"><\/script>')</script>
 
-	<script src="asset/vendor/makeapi-client/src/make-api.js"></script>
+  <!-- makeapi client [required] -->
+  <script src="asset/vendor/makeapi-client/src/make-api.js"></script>
 
-	<script src="asset/js/Array.prototype.shuffle.js"></script>
-	<script src="asset/js/query2object.js"></script>
-	<script src="asset/js/quilt.js"></script>
+  <!-- quilt control/generation scripts [required] -->
+  <script src="asset/js/Array.prototype.shuffle.js"></script>
+  <script src="asset/js/query2object.js"></script>
+  <script src="asset/js/quilt.js"></script>
 
-	<script src="//mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
+  <!-- tabzilla [optional] -->
+  <script src="//mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
 </body>
 </html>
