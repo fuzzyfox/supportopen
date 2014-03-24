@@ -19,13 +19,14 @@
   // check for all dependencies, and abort if any are missing
   var missingDepsFlag = false;
 
-  deps.forEach( function(dep) {
+  deps.forEach( function( dep ) {
     if ( !dep ) {
       missingDepsFlag = true;
     }
   });
 
   if ( missingDepsFlag ) {
+    console.log( 'missing a dependency' );
     return;
   }
 
@@ -199,14 +200,17 @@
     });
 
     // attempt to get more makes for infinite scroll
-    $( window ).scroll( function() {
-      if ( $( window ).scrollTop() === $( document ).height() - $( window ).height() ) {
-        getMakes( pageNumber + 1, function() {
-          pageNumber++;
-          startDisplayTimer();
-        });
-      }
-    });
+    // must be enabled via config for now, [alpha feature]
+    if( config.infiniteScroll ) {
+      $( window ).scroll( function() {
+        if ( $( window ).scrollTop() === $( document ).height() - $( window ).height() ) {
+          getMakes( pageNumber + 1, function() {
+            pageNumber++;
+            startDisplayTimer();
+          });
+        }
+      });
+    }
   }
 
   window.Quilt = Quilt;
