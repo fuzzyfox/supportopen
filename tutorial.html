@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web I want... Tutorial</title>
+    <!-- this stylesheet provides default styles for tutorials -->
+    <link href="//thimble.webmaker.org/learning_projects/tutorial/tutorial.css" rel="stylesheet">
+    <!-- these scripts turn your make into a tutorial -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//thimble.webmaker.org/learning_projects/tutorial/tutorial.js"></script>
+    <script>
+      jQuery(document).ready(function($){
+        $('body').tutorial();
+      });
+    </script>
+    <style>
+      .arrow {
+        font-size: 160%;
+        font-weight: 800;
+        color: #808080;
+        font-family: "Comic Sans MS", Helvetica, sans-serif;
+        line-height: 0;
+        vertical-align: sub;
+      }
+      img {
+        max-width: 100%;
+      }
+    </style>
+</head>
+  <body>
+    <!--
+      enclose each tutorial step in its own section tag
+
+    if you want to attach this tutorial to another make:
+      first publish this make
+      then tag the other make with prefix "tutorial-" followed by the url for this make
+
+    Note on this tutorial
+    ----------------------
+    This is more or less the original starter make instructions. Minor wording changes were done
+    to accomodate the structure of the tutorial.
+    -->
+
+    <section>
+      <h1>Welcome to the Support Open... Tutorial!</h1>
+      <p>This tutorial is meant to help you with this make, but if at any time you want to hide it, just click on the <span class="arrow">&lt;</span> arrow icon above.</p>
+
+      <h2>Prior Knowledge</h2>
+      <p>Some HTML and CSS is helpful, but not required. We'll provide step-by-step instructions here or you can find the bold and italicized prompts right in the code.</p>
+    </section>
+
+    <section>
+      <h1>Change that Text</h1>
+      <p>Let's start by changing the name of your webpage on line 9. This is optional, but feel free to personalize.</p>
+
+      <h2>Why do you support open?</h2>
+      <p>Head down to line 78 and tell us. Just replace the black text with your own words and see the change immediately in the preview panel on the right.</p>
+    </section>
+
+    <section>
+      <h1>A Little About Yourself</h1>
+      <p>Change the name on line 81 to be your own.</p>
+      <p>Don't forget to update the link to use your Webmaker username, or your location on line 82.</p>
+
+      <h2>Add Your Avatar</h2>
+      <p>Change the link on line 83 to link to your avatar (or any image from the web) and it will automagically be cropped with a round border.</p>
+    </section>
+
+    <section>
+      <h1>Change the Background</h1>
+      <p>You can change the background image by replacing the link on line 20.</p>
+
+      <h2>Bonus Styling</h2>
+      <p>Know CSS? Play around with the other colours and the text.</p>
+    </section>
+
+    <section>
+      <h1>Congratulations!</h1>
+      <p>Don't forget to hit the save button. From there you can grab your unique URL, or send via Facebook, Twitter or G+ to share your support for open! Be sure to use <strong>#supportopen</strong> so others can see the web you want, or remix it to share their love for open too.</p>
+      <p>We hope you've had fun with this project, but if something seemed missing or unclear, please let us know by emailing <a href="mailto:{support_email_address}">{support_email_address}</a></p>
+    </section>
+
+  </body>
+</html>
