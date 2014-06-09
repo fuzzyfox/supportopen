@@ -21,9 +21,9 @@ Include in a page (minimum requirements example):
 			</div>
 
 			<!-- yeah... all these scripts (plan to reduce this) -->
-			<script src="./bower_components/supportopen-quilt/asset/vendor/jquery/dist/jquery.min.js"></script>
-			<script src="./bower_components/supportopen-quilt/asset/vendor/masonry/dist/masonry.pkgd.min.js"></script>
-			<script src="./bower_components/supportopen-quilt/asset/vendor/makeapi-client/src/make-api.js"></script>
+			<script src="./bower_components/jquery/dist/jquery.min.js"></script>
+			<script src="./bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+			<script src="./bower_components/makeapi-client/src/make-api.js"></script>
 			<script src="./bower_components/supportopen-quilt/dist/quilt.min.js"></script>
 
 			<!-- finally we can init the quilt -->
