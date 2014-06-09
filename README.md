@@ -1,6 +1,37 @@
 # Support Open Community Quilt
 A user generated quilt of tagged makes.
 
+## Install
+Get w/ bower:
+
+	$ bower install fuzzyfox/supportopen
+
+Include in a page (minimum requirements example):
+
+	<!doctype html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<link rel="stylesheet" href="./bower_components/supportopen-quilt/dist/quilt.min.css">
+		</head>
+		<body>
+			<div id="quiltContainer">
+				<iframe src="http://pathto.example.com/companion_make.html" frameborder="0" id="makePreview" class="quilt-msnry"></iframe>
+				<ul id="quiltMakes"></ul>
+			</div>
+
+			<!-- yeah... all these scripts (plan to reduce this) -->
+			<script src="./bower_components/supportopen-quilt/asset/vendor/jquery/dist/jquery.min.js"></script>
+			<script src="./bower_components/supportopen-quilt/asset/vendor/masonry/dist/masonry.pkgd.min.js"></script>
+			<script src="./bower_components/supportopen-quilt/asset/vendor/makeapi-client/src/make-api.js"></script>
+			<script src="./bower_components/supportopen-quilt/dist/quilt.min.js"></script>
+
+			<!-- finally we can init the quilt -->
+			<script>Quilt();</script>
+		</body>
+	</html>
+
+
 ## Usage
 ### Configuration
 The quilt has some builtin default options (seen below) which can be overridden on initilization, or via page querystring.
@@ -26,9 +57,11 @@ The quilt has some builtin default options (seen below) which can be overridden 
 
 
 ## Demo
-[Generic quilt example](http://fuzzyfox.github.io/supportopen/quilt.html) *– included in this repository*
+<strike>[Generic quilt example](http://fuzzyfox.github.io/supportopen/quilt.html) *– included in this repository*
 
-Displays makes with all known tags used for quilts. Essentially the "sharing is caring" mode.
+Displays makes with all known tags used for quilts. Essentially the "sharing is caring" mode.</strike>
+
+	// new demo on its way
 
 ## In the wild
 ### Support Open
@@ -40,7 +73,11 @@ Displays makes with all known tags used for quilts. Essentially the "sharing is 
 * [Web We Want Quilt](http://mzl.la/webwewantremix)
 
 ## Development
-Play nice:
+### Install
+
+	$ npm install && bower install
+
+### Play nice:
 
 * remove trailing whitespace from files before save
 * don't use non-ascii file names
