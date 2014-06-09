@@ -1,0 +1,31 @@
+{
+  "name": "supportopen-quilt",
+  "version": "0.0.4",
+  "homepage": "https://github.com/fuzzyfox/supportopen",
+  "authors": [
+    "William Duyck"
+  ],
+  "description": "A user generated quilt of tagged makes from webmaker.org",
+  "keywords": [
+    "mozilla",
+    "webmaker",
+    "quilt",
+    "community",
+    "supportopen"
+  ],
+  "license": "MPL-2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "makerstrap": "~0.1.8",
+    "masonry": "~3.1.5",
+    "makeapi-client": "~0.5.26",
+    "jquery": "~2.1.1"
+  }
+}

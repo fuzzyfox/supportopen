@@ -129,3 +129,10 @@ header.jumbotron {
   margin-right: -240px;
   margin-bottom: -240px;
 }
+
+body.galleryMode > nav.navbar,
+body.galleryMode header.jumbotron,
+body.galleryMode #cta {
+  display: none;
+  visibility: hidden;
+}

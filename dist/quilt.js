@@ -68,13 +68,14 @@ var query = window.query = (function( window, document, undefined ){
   // check for all dependencies, and abort if any are missing
   var missingDepsFlag = false;
 
-  deps.forEach( function(dep) {
+  deps.forEach( function( dep ) {
     if ( !dep ) {
       missingDepsFlag = true;
     }
   });
 
   if ( missingDepsFlag ) {
+    console.log( 'missing a dependency' );
     return;
   }
 
@@ -103,7 +104,8 @@ var query = window.query = (function( window, document, undefined ){
     tags: [ 'supportopen', 'webwewant', 'millionmozillians' ],
     execution: 'or',
     limit: 100,
-    duration: 7000
+    duration: 7000,
+    galleryMode: false
   };
 
   // get user config and convert any tags into array.
@@ -237,6 +239,13 @@ var query = window.query = (function( window, document, undefined ){
     userConfig = userConfig || {};
     $.extend( config, userConfig, urlConfig );
 
+    // check if in gallery mode and hide some UI if true
+    if( config.galleryMode ) {
+      $( 'body' ).addClass( 'galleryMode' );
+      $( '#cta' ).removeClass( 'quilt-msnry' );
+      setTimeout( function(){ $quiltContainer.masonry( 'reloadItems' ); }, 1000 );
+    }
+
      // run search and start showing makes
     getMakes( pageNumber, function(){
       startDisplayTimer();
@@ -248,14 +257,17 @@ var query = window.query = (function( window, document, undefined ){
     });
 
     // attempt to get more makes for infinite scroll
-    $( window ).scroll( function() {
-      if ( $( window ).scrollTop() === $( document ).height() - $( window ).height() ) {
-        getMakes( pageNumber + 1, function() {
-          pageNumber++;
-          startDisplayTimer();
-        });
-      }
-    });
+    // must be enabled via config for now, [alpha feature]
+    if( config.infiniteScroll ) {
+      $( window ).scroll( function() {
+        if ( $( window ).scrollTop() === $( document ).height() - $( window ).height() ) {
+          getMakes( pageNumber + 1, function() {
+            pageNumber++;
+            startDisplayTimer();
+          });
+        }
+      });
+    }
   }
 
   window.Quilt = Quilt;

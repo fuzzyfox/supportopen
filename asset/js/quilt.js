@@ -55,7 +55,8 @@
     tags: [ 'supportopen', 'webwewant', 'millionmozillians' ],
     execution: 'or',
     limit: 100,
-    duration: 7000
+    duration: 7000,
+    galleryMode: false
   };
 
   // get user config and convert any tags into array.
@@ -188,6 +189,12 @@
     // extend default config w/ user values
     userConfig = userConfig || {};
     $.extend( config, userConfig, urlConfig );
+
+    // check if in gallery mode and hide some UI if true
+    if( config.galleryMode ) {
+      $( 'body' ).addClass( 'galleryMode' );
+      $( '#cta' ).removeClass( 'quilt-msnry' );
+    }
 
      // run search and start showing makes
     getMakes( pageNumber, function(){

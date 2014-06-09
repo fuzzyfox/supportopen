@@ -59,6 +59,20 @@ module.exports = function( grunt ) {
         src: 'asset/css/quilt.css',
         dest: 'dist/quilt.css'
       }
+    },
+
+    watch: {
+      files: [ 'asset/js/*.js' ],
+      tasks: [ 'jshint' ]
+    },
+
+    connect: {
+      server: {
+        options: {
+          port: 4444,
+          useAvailablePort: true
+        }
+      }
     }
   });
 
@@ -67,7 +81,9 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
   grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
   grunt.loadNpmTasks( 'grunt-contrib-copy' );
+  grunt.loadNpmTasks( 'grunt-contrib-connect' );
+  grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
-  grunt.registerTask( 'default', [ 'jshint' ]);
+  grunt.registerTask( 'default', [ 'jshint', 'connect', 'watch' ]);
   grunt.registerTask( 'build', [ 'jshint', 'copy', 'concat', 'uglify', 'cssmin' ]);
 };

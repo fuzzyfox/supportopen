@@ -1,9 +1,0 @@
-[submodule "asset/vendor/makeapi-client"]
-	path = asset/vendor/makeapi-client
-	url = https://github.com/mozilla/makeapi-client.git
-[submodule "asset/vendor/masonry"]
-	path = asset/vendor/masonry
-	url = https://github.com/desandro/masonry
-[submodule "asset/vendor/makerstrap"]
-	path = asset/vendor/makerstrap
-	url = https://github.com/mozilla/makerstrap.git
