@@ -1,0 +1,30 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+/* basic styles */
+html, body {
+  background: #4d4e53;
+  margin: auto;
+  overflow-x: hidden;
+  color: white;
+}
+header, main {
+  margin: auto;
+}
+
+/* Header styles */
+header.jumbotron {
+  margin-top: -20px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+body.galleryMode > nav.navbar,
+body.galleryMode header.jumbotron,
+body.galleryMode #cta {
+  display: none;
+  visibility: hidden;
+}

@@ -4,24 +4,6 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-/* basic styles */
-html, body {
-  background: #4d4e53;
-  margin: auto;
-  overflow-x: hidden;
-  color: white;
-}
-header, main {
-  margin: auto;
-}
-
-/* Header styles */
-header.jumbotron {
-  margin-top: -20px;
-  margin-bottom: 0;
-  text-align: center;
-}
-
 /* Thumbnail styles */
 #quiltMakes {
   display: block;
@@ -69,7 +51,7 @@ header.jumbotron {
 }
 
 /*Call To Action styles*/
-#cta {
+#quiltContainer #cta {
   width: 480px;
   height: 320px;
   background: #3fb58e;
@@ -78,12 +60,12 @@ header.jumbotron {
   padding: 20px 30px;
   font: lighter 18px/1.4 "Open Sans", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
 }
-#cta strong {
+#quiltContainer #cta strong {
   font-weight: 400;
   font-style: italic;
   font-size: 16px;
 }
-.white-button {
+#quiltContainer .white-button {
   color: #3fb58e;
   background: none repeat scroll 0% 0% #FFF;
   border: medium none;
@@ -100,13 +82,13 @@ header.jumbotron {
   box-sizing: border-box;
   border-bottom: 4px solid #ABE2D0;
 }
-.white-button:hover {
+#quiltContainer .white-button:hover {
   text-decoration: none;
   color: #3fb58e;
 }
 
 /* preview styles */
-#makePreview {
+#quiltContainer #makePreview {
   width: 720px;
   height: 720px;
   border: none;
@@ -128,11 +110,4 @@ header.jumbotron {
   transform-origin: 0 0;
   margin-right: -240px;
   margin-bottom: -240px;
-}
-
-body.galleryMode > nav.navbar,
-body.galleryMode header.jumbotron,
-body.galleryMode #cta {
-  display: none;
-  visibility: hidden;
 }

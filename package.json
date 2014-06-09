@@ -1,6 +1,6 @@
 {
   "name": "supportopen",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A user generated quilt of tagged makes.",
   "scripts": {
     "test": "grunt"

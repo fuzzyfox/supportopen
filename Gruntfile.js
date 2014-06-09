@@ -62,8 +62,8 @@ module.exports = function( grunt ) {
     },
 
     watch: {
-      files: [ 'asset/js/*.js' ],
-      tasks: [ 'jshint' ]
+      files: [ 'asset/js/*.js', 'asset/css/quilt.css' ],
+      tasks: [ 'jshint', 'copy', 'concat', 'uglify', 'cssmin' ]
     },
 
     connect: {
@@ -84,6 +84,6 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks( 'grunt-contrib-connect' );
   grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
-  grunt.registerTask( 'default', [ 'jshint', 'connect', 'watch' ]);
+  grunt.registerTask( 'default', [ 'jshint', 'copy', 'concat', 'uglify', 'cssmin', 'connect', 'watch' ]);
   grunt.registerTask( 'build', [ 'jshint', 'copy', 'concat', 'uglify', 'cssmin' ]);
 };

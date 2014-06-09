@@ -243,7 +243,6 @@ var query = window.query = (function( window, document, undefined ){
     if( config.galleryMode ) {
       $( 'body' ).addClass( 'galleryMode' );
       $( '#cta' ).removeClass( 'quilt-msnry' );
-      setTimeout( function(){ $quiltContainer.masonry( 'reloadItems' ); }, 1000 );
     }
 
      // run search and start showing makes
