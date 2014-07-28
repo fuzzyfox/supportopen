@@ -88,7 +88,8 @@
 }
 
 /* preview styles */
-#quiltContainer #makePreview {
+#quiltContainer #makePreview,
+#quiltContainer #quiltPreview {
   width: 720px;
   height: 720px;
   border: none;

@@ -118,17 +118,6 @@ on initilization, or via page querystring.
 
 ```
 
-##### Configure by URL
-* **Tags:** `tags=comma,separated,list,of,tags`
-* **Execution:** `execution=or`
-* **Limit:** `limit=100`
-* **Duration:** `duration=7000`
-
-**Example** showing how to fetch only 10 makes tagged `supportopen` **and**
-`mozfest`, and show each for 10 seconds.
-
-	fuzzyfox.github.io/supportopen/quilt.html?tags=supportopen,mozfest&execution=and&limit=10&duration=10000
-
 #### Setup the remix prompt ("companion make")
 The quilt only works when people are sharing tagged projects on webmaker.org that
 we are looking for, however it works best when remixing a pre-made prompt. There

@@ -4,81 +4,72 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-(function(window, document, undefined){
-  'use strict';
+/* global define, jQuery, Make, Masonry */
+'use strict';
 
-  // list of dependencies
-  var deps = [
-    window.jQuery,
-    window.Make,
-    window.Masonry,
-    window.query,
-    Array.prototype.shuffle
-  ];
+function quilt( $, Make, Masonry ) {
+  var called = false;
 
-  // check for all dependencies, and abort if any are missing
-  var missingDepsFlag = false;
-
-  deps.forEach( function( dep ) {
-    if ( !dep ) {
-      missingDepsFlag = true;
-    }
-  });
-
-  if ( missingDepsFlag ) {
-    console.log( 'missing a dependency' );
-    return;
-  }
-
-  // init makeapi client
-  var makeapi = new window.Make({
-    apiURL: 'https://makeapi.webmaker.org'
-  });
-
-  // utilize jQuery
-  var $ = window.jQuery;
-
-  // reference to the quilt's container
-  var $quiltContainer = $( '#quiltContainer' );
-  // reference to the preview iframe
-  var $makePreview = $( '#makePreview' );
-
-  // init masonry
-  $quiltContainer.masonry({
-    itemSelector: '.quilt-msnry',
-    columnWidth: 160,
-    transitionDuration: 0.7
-  });
-
-  // set default options
+  // default configuration
   var config = {
     tags: [ 'supportopen', 'webwewant', 'millionmozillians' ],
     execution: 'or',
     limit: 100,
     duration: 7000,
-    galleryMode: false
+    makeapi: {
+      apiURL: 'https://makeapi.webmaker.org'
+    },
+    $quiltContainer: $( '#quiltContainer' ),
+    $makesContainer: $( '#quiltMakes' ),
+    $preview: $( '#quiltPreview' ),
+    centerQuilt: true
   };
 
-  // get user config and convert any tags into array.
-  var urlConfig = window.query();
-  if ( urlConfig.tags ) {
-    urlConfig.tags = urlConfig.tags.split(',');
-  }
-
-  // set internal variables
-  var numberOfMakes = 0;
-  var pageNumber    = 1;
-  var displayOrder  = [];
-  var displayTimer  = null;
+  // we'll need a makeapi
+  var makeapi;
+  var totalMakes = 0;
+  var masonry;
+  var previewInterval;
+  var previewOrder = [];
 
   /**
-   * get makes from the makeapi
+   * Returns a shuffled version of the input array.
    *
-   * @param  {Integer}  page page number of results to fetch
-   * @param  {Function} done callback to run once search complete
+   * Uses the Fisher-Yates shuffle.
+   *
+   * @param {Array} array The array to shuffle
+   * @return {Array} Shuffled array.
+   */
+  function shuffleArray( array ) {
+    var randomIndex = 0;
+    var tempValue = null;
+    var length = array.length;
+
+    if( length < 2 ) {
+      return array;
+    }
+
+    while( length ) {
+      randomIndex = Math.floor( Math.random() * length );
+      length--;
+
+      tempValue = array[ length ];
+      array[ length ] = array[ randomIndex ];
+      array[ randomIndex ] = tempValue;
+    }
+
+    return array;
+  }
+
+  /**
+   * Get makes from the makeapi
+   *
+   * @param  {Number}   page An integer indicating the search page
+   * @param  {Function} done Function to run once search complete
    */
   function getMakes( page, done ) {
     page = page || 1;
+
     makeapi
       .tags({
         tags: config.tags,
@@ -89,136 +80,159 @@
       .contentType( 'application/x-thimble' )
       .page( page )
       .then( function( err, makes ) {
-        // check if search failed or not
-        if ( err ) {
-          console.log( err );
+        // stop on search error
+        if( err ) {
+          console.error( err );
           return;
         }
 
-        // check some makes were returned
-        if ( makes.length === 0 ) {
+        // don't call done if no makes (and return null)
+        if( makes.length === 0 ) {
           return;
         }
 
-        // shuffle the order of the makes returned
-        makes.shuffle();
+        // shuffle makes found
+        makes = shuffleArray( makes );
 
-        // reference to makes
-        var $makes = $( '#quiltMakes' );
-
-        // add each make to the DOM
+        // add makes to the DOM
         makes.forEach( function( make ) {
-          var thumbnail = 'https://secure.gravatar.com/avatar/' + make.emailHash + '?s=200&d=' + make.thumbnail;
+          // construct avatar url
+          var avatar = 'https://secure.gravatar.com/avatar/' + make.emailHash + '?s=200&d=' + make.thumbnail;
 
-          var thumb = '<li class="quilt-msnry" data-make="' + make.url + '" style="background-image:url(' + thumbnail + ')">';
-          thumb += '<a href="' + make.url +'">';
-          thumb += '<img src="' + thumbnail + '" alt="' + make.title + ' by ' + make.user + '" /></a></li>';
+          // construct make thumb for injection into DOM
+          var thumb = '<li class="quilt-msnry" data-make-url="' + make.url + '" style="background-image:url(' + avatar + ')">\n' +
+                      '  <a href="' + make.url + '">\n' +
+                      '    <img src="' + avatar + '" alt="' + make.title + ' by ' + make.user + '" />\n' +
+                      '  </a>\n' +
+                      '</li>';
 
-          $makes.append( thumb );
+          // inject thumb into DOM
+          config.$makesContainer.append( thumb );
 
-          $quiltContainer.masonry( 'appended', $makes.children().last() );
+          // if masonry in use let it know we added something
+          if( Masonry ) {
+            masonry.appended( config.$makesContainer.children().last().get( 0 ) );
+          }
 
-          numberOfMakes++;
+          // add to previewOrder
+          previewOrder.push( totalMakes );
+
+          // increment total of makes
+          totalMakes++;
         });
 
-        // add new makes to the queue
-        for( var i = displayOrder.length, j = numberOfMakes; i < j; i++ ) {
-          displayOrder[ i ] = i;
-        }
-        displayOrder.shuffle();
+        // shuffle preview queue
+        previewOrder = shuffleArray( previewOrder );
 
-        // we're done w/ the async + dom manipulation
-        if ( (numberOfMakes <= config.limit) && done ) {
+        // done w/ this page of search results
+        if( ( totalMakes <= config.limit ) && done ) {
           done();
         }
       });
   }
 
   /**
-   * load the next make into the preview iframe
+   * Load a make into the preview iframe
+   *
+   * @param  {jQuery} $selection selected make to preview
    */
-  function showNextMake() {
-    // get latest makes in DOM
-    var $makes    = $( '#quiltMakes' ).children();
-    var selection = displayOrder.shift();
+  function previewMake( $selection ) {
+    // get all makes
+    var $makes = config.$makesContainer.children();
 
-    displayOrder.push( selection );
+    // check if a selection was provided
+    if( ! $selection ) {
+      // get a random make to show from the previewOrder array
+      var selection = previewOrder.shift();
+      // cycle previewOrder array
+      previewOrder.push( selection );
 
-    $makes.each( function() {
-      $( this ).removeClass( 'active' );
-    });
+      // make selection
+      $selection = $makes.eq( selection );
+    }
 
-    $makes.eq( selection ).addClass( 'active' );
+    // deactivate any previous selection
+    $makes.filter( '.active' ).removeClass( 'active' );
 
-    $makePreview.attr( 'src', $makes.eq( selection ).data( 'make' ) + '_' );
+    // preview selected make
+    $selection.addClass( 'active' );
+    config.$preview.attr( 'src', $selection.data( 'make-url' ) + '_' );
   }
 
-  // start display timer
-  function startDisplayTimer() {
-    clearInterval( displayTimer );
-    displayTimer = setInterval( showNextMake, config.duration );
+  /**
+   * (Re)starts the preview loading interval
+   */
+  function startPreviewInterval() {
+    clearInterval( previewInterval );
+    previewInterval = setInterval( previewMake, config.duration );
   }
 
-  // when a make is clicked load it into preview
-  $( '#quiltMakes' ).on( 'click', 'li', function(){
-    $makePreview.attr( 'src', $( this ).data( 'make' ) + '_' );
+  /**
+   * Handle click on a make thumbnail
+   */
+  config.$makesContainer.on( 'click', 'li', function() {
+    // load make into preview
+    previewMake( $( this ) );
 
-    // clear active class and set on current
-    var $makes = $( '#quiltMakes' ).children();
-    $makes.each( function() {
-      $( this ).removeClass( 'active' );
-    });
+    // restart preview interval
+    startPreviewInterval();
 
-    $( this ).addClass( 'active' );
-
-    // restart time so that this make gets full time
-    startDisplayTimer();
-
-    // prevent url follow
+    // prevent link follow
     return false;
   });
 
-  // handle page resizes better
-  function setContainerWidth() {
-    $quiltContainer.width( 160 * Math.floor( $quiltContainer.parent().width() / 160 ) );
+  /**
+   * An aid to centering the quilt in its parent
+   */
+  function centerContainer() {
+    config.$quiltContainer.width( 160 * Math.floor( config.$quiltContainer.parent().width() / 160 ) );
   }
-  setContainerWidth();
-  $( window ).resize( setContainerWidth );
 
-  function Quilt( userConfig ) {
-    // extend default config w/ user values
-    userConfig = userConfig || {};
-    $.extend( config, userConfig, urlConfig );
-
-    // check if in gallery mode and hide some UI if true
-    if( config.galleryMode ) {
-      $( 'body' ).addClass( 'galleryMode' );
-      $( '#cta' ).removeClass( 'quilt-msnry' );
+  // return init function
+  return function( options ) {
+    // prevent function being called more than once
+    if( called ) {
+      return;
     }
+    called = true;
 
-     // run search and start showing makes
-    getMakes( pageNumber, function(){
-      startDisplayTimer();
-    });
+    // allow null options
+    options = options || {};
 
-    // keep getting results till none left
-    getMakes( ++pageNumber, function getNextMakes() {
-      getMakes( ++pageNumber, getNextMakes );
-    });
+    // extend default config w/ user options
+    $.extend( config, options );
 
-    // attempt to get more makes for infinite scroll
-    // must be enabled via config for now, [alpha feature]
-    if( config.infiniteScroll ) {
-      $( window ).scroll( function() {
-        if ( $( window ).scrollTop() === $( document ).height() - $( window ).height() ) {
-          getMakes( pageNumber + 1, function() {
-            pageNumber++;
-            startDisplayTimer();
-          });
-        }
+    // initilize makeapi
+    makeapi = new Make( config.makeapi );
+
+    // mansonry initilization if needed
+    if( Masonry ) {
+      masonry = new Masonry( config.$quiltContainer.get( 0 ), {
+        itemSelector: '.quilt-msnry',
+        columnWidth: 160, // this should be configurable or magical
+        transitionDuration: 0.7 // this should be configurable
       });
     }
-  }
 
-  window.Quilt = Quilt;
-})(this, this.document);
+    // fetch makes
+    getMakes( 1, function() {
+      // we have some makes we can show now
+      startPreviewInterval();
+    });
+
+    // center quilt if needed
+    if( config.centerQuilt ) {
+      centerContainer();
+      $( window ).resize( centerContainer );
+    }
+  };
+}
+
+// check for AMD scope
+if( typeof define !== 'undefined' ) {
+  define( [ 'jquery', 'makeapi', 'masonry' ], quilt );
+}
+// fall back scope (browser)
+else {
+  window.Quilt = quilt( jQuery, Make, Masonry );
+}
